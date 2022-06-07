@@ -12,7 +12,7 @@ Nous allons passer en revue aussi bien l’élaboration du modèle de données, 
 
 ## Sommaire
 
-1. Création du modèle
+1. [Création du modèle](https://laravel-france.com/posts/les-bases-16-creation-du-modele)
 2. Création du contrôleur
 3. Validation des données
 4. Contrôle d’accès
