@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Restaurant;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +16,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::factory()->count(1)->admin()->create([
+            'email' => 'admin@example.net',
+        ]);
+
+        User::factory()->count(5)
+            ->has(Restaurant::factory()->count(2))
+            ->create();
     }
 }
