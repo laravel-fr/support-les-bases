@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RestaurantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,16 +18,30 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('whoami', function () {
-    $user = Illuminate\Support\Facades\Auth::user();
+Route::get('/restaurants', [RestaurantController::class, 'index'])
+    ->name('restaurants.index');
 
-    echo $user ? $user->name : 'no body';
-});
+Route::get('/restaurants/create', [\App\Http\Controllers\RestaurantController::class, 'create'])
+    ->name('restaurants.create');
 
-Route::get('auth', function () {
-    $user = App\Models\User::first() ?: App\Models\User::factory()->create();
+Route::post('/restaurants', [\App\Http\Controllers\RestaurantController::class, 'store'])
+    ->name('restaurants.store');
 
-    Illuminate\Support\Facades\Auth::login($user);
+Route::get('/restaurants/{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'show'])
+    ->name('restaurants.show');
 
-    return redirect('/whoami');
-});
+Route::get('/restaurants/{restaurant}/edit', [\App\Http\Controllers\RestaurantController::class, 'edit'])
+    ->name('restaurants.edit');
+
+Route::put('/restaurants/{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'update'])
+    ->name('restaurants.update');
+
+Route::delete('/restaurants/{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'destroy'])
+    ->name('restaurants.destroy');
+
+/**
+ * L'ensemble des routes liées à la gestion du restaurant
+ * peut être remplacer par cette unique instruction
+ */
+
+//Route::resource('restaurants', RestaurantController::class);
