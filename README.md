@@ -14,9 +14,9 @@ Nous allons passer en revue aussi bien l’élaboration du modèle de données, 
 
 1. [Création du modèle](https://laravel-france.com/posts/les-bases-16-creation-du-modele)
 2. [Création du contrôleur](https://laravel-france.com/posts/les-bases-26-creation-du-controleur)
-3. Validation des données
-4. Contrôle d’accès
-5. Création des vues
+3. [Création des vues](https://laravel-france.com/posts/les-bases-36-creation-des-vues)
+4. Validation des données
+5. Contrôle d’accès
 6. Tests
 
 ## Lancer l'application

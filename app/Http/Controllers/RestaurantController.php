@@ -48,7 +48,7 @@ class RestaurantController extends Controller
             $restaurant
         );
 
-        return redirect()->route('restaurants.index');
+        return redirect()->route('restaurants.show', $restaurant);
     }
 
     /**
@@ -92,7 +92,7 @@ class RestaurantController extends Controller
             $request->only('name', 'address', 'type')
         );
 
-        return redirect()->route('restaurants.index');
+        return redirect()->route('restaurants.show', $restaurant);
     }
 
     /**
