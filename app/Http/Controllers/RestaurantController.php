@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRestaurantRequest;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
@@ -38,10 +39,10 @@ class RestaurantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRestaurantRequest $request)
     {
         $restaurant = Restaurant::make(
-            $request->only('name', 'address', 'type')
+            $request->validated()
         );
 
         $request->user()->restaurants()->save(
@@ -86,10 +87,10 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Restaurant $restaurant)
+    public function update(StoreRestaurantRequest $request, Restaurant $restaurant)
     {
         $restaurant->update(
-            $request->only('name', 'address', 'type')
+            $request->validated()
         );
 
         return redirect()->route('restaurants.show', $restaurant);
