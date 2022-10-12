@@ -19,29 +19,36 @@ Route::get('/', function () {
 });
 
 Route::get('/restaurants', [RestaurantController::class, 'index'])
-    ->name('restaurants.index');
+    ->name('restaurants.index')
+    ->middleware(['can:viewAny,App\Models\Restaurant']);
 
-Route::get('/restaurants/create', [\App\Http\Controllers\RestaurantController::class, 'create'])
-    ->name('restaurants.create');
+Route::get('/restaurants/create', [RestaurantController::class, 'create'])
+    ->name('restaurants.create')
+    ->middleware(['auth', 'can:create,App\Models\Restaurant']);
 
-Route::post('/restaurants', [\App\Http\Controllers\RestaurantController::class, 'store'])
-    ->name('restaurants.store');
+Route::post('/restaurants', [RestaurantController::class, 'store'])
+    ->name('restaurants.store')
+    ->middleware(['auth', 'can:create,App\Models\Restaurant']);
 
-Route::get('/restaurants/{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'show'])
-    ->name('restaurants.show');
+Route::get('/restaurants/{restaurant}', [RestaurantController::class, 'show'])
+    ->name('restaurants.show')
+    ->middleware(['can:view,restaurant']);
 
-Route::get('/restaurants/{restaurant}/edit', [\App\Http\Controllers\RestaurantController::class, 'edit'])
-    ->name('restaurants.edit');
+Route::get('/restaurants/{restaurant}/edit', [RestaurantController::class, 'edit'])
+    ->name('restaurants.edit')
+    ->middleware(['auth', 'can:update,restaurant']);
 
-Route::put('/restaurants/{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'update'])
-    ->name('restaurants.update');
+Route::put('/restaurants/{restaurant}', [RestaurantController::class, 'update'])
+    ->name('restaurants.update')
+    ->middleware(['auth', 'can:update,restaurant']);
 
-Route::delete('/restaurants/{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'destroy'])
-    ->name('restaurants.destroy');
+Route::delete('/restaurants/{restaurant}', [RestaurantController::class, 'destroy'])
+    ->name('restaurants.destroy')
+    ->middleware(['auth', 'can:delete,restaurant']);
 
 /**
  * L'ensemble des routes liées à la gestion du restaurant
- * peut être remplacer par cette unique instruction
+ * peut être remplacé par cette unique instruction
  */
 
 //Route::resource('restaurants', RestaurantController::class);

@@ -46,4 +46,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Restaurant::class);
     }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isOwner(): bool
+    {
+        return $this->role = 'owner';
+    }
 }

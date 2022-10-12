@@ -2,9 +2,11 @@
     <x-slot:title>Liste des restaurants</x-slot:title>
 
     <h2>Liste des restaurants</h2>
-    <div style="margin-bottom: 1rem">
-        <a href="{{ route('restaurants.create') }}">Créer un restaurant</a>
-    </div>
+    @can('create', App\Models\Restaurant::class)
+        <div style="margin-bottom: 1rem">
+            <a href="{{ route('restaurants.create') }}">Créer un restaurant</a>
+        </div>
+    @endcan
     <table>
         <thead>
             <tr>
