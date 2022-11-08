@@ -17,7 +17,7 @@ Nous allons passer en revue aussi bien l’élaboration du modèle de données, 
 3. [Création des vues](https://laravel-france.com/posts/les-bases-36-creation-des-vues)
 4. [Validation des données](https://laravel-france.com/posts/les-bases-46-validation-des-donnees)
 5. [Contrôle d’accès](https://laravel-france.com/posts/les-bases-56-controle-dacces)
-6. Tests
+6. [Les tests](https://laravel-france.com/posts/les-bases-66-les-tests)
 
 ## Lancer l'application
 
