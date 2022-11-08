@@ -54,6 +54,6 @@ class User extends Authenticatable
 
     public function isOwner(): bool
     {
-        return $this->role = 'owner';
+        return $this->role === 'owner';
     }
 }

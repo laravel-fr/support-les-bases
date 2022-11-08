@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/login', function () {
+    return "Formulaire d'authentification...";
+})->name('login');
+
 Route::get('/restaurants', [RestaurantController::class, 'index'])
     ->name('restaurants.index')
     ->middleware(['can:viewAny,App\Models\Restaurant']);
